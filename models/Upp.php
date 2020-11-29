@@ -179,4 +179,16 @@ class Upp extends \yii\db\ActiveRecord
         $upp = Upp::find()->where('r01_id=:id', ['id'=>$id])->one();
         return ArrayHelper::map($upp, 'r01_id', 'r01.r01_nombre');
     }
+
+    public static  function getUppsPorProductors($id){
+        $dropciones = PropietarioUnidad::find()
+        ->where('c01_id=:id', ['id'=>$id]);
+
+        $dataprovider = new ActiveDataProvider([
+        'query' => $dropciones,
+        'pagination' => ['pageSize' => 5000],
+        ]);
+
+        return $dataprovider;
+}
 }

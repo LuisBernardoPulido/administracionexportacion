@@ -131,8 +131,8 @@ $config = [
             'site/recoverpass',
             'site/resetpass',
             'admin/*',
-            'perfil-usuario/*',
-
+            'perfil-usuario-exportador/*',
+            'perfil-usuario/view',
             'site/index',
             'unidades/upplistresenas',
             'unidades/upplist',
@@ -146,8 +146,6 @@ $config = [
             'site/local-storange',
             'site/retrieve',
             'debug/*',
-            'exportacion/*',
-            'solicitudes-exportaciones/*',
             'gii/*',
             'some-controller/some-action',
         ]

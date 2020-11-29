@@ -43,7 +43,7 @@ class PerfilUsuarioSearch extends PerfilUsuario
     {
         $query = PerfilUsuario::find();
 
-        // add conditions that should always apply here
+        $query->where("a02_idproductor=:yes ", [':yes' => 1]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -20,7 +20,9 @@ use yii\helpers\ArrayHelper;
  * @property integer $a02_intentos
  * @property integer $a02_islab
  * @property integer $a02_ismed
+ * @property integer $a02_idproductor
  * @property integer $c05_id
+ * @property integer $c01_id
  * @property integer $a02_usuAlta
  * @property string $a02_fecAlta
  * @property integer $a02_usuMod
@@ -45,7 +47,7 @@ class PerfilUsuario extends \yii\db\ActiveRecord
     {
         return [
             [['a01_id', 'a02_nombre', 'a02_usuAlta'], 'required'],
-            [['a01_id', 'a02_activo', 'a02_intentos', 'a02_islab', 'a02_ismed', 'c05_id', 'a02_usuAlta', 'a02_usuMod'], 'integer'],
+            [['a01_id', 'a02_activo', 'a02_intentos', 'a02_islab', 'a02_ismed', 'a02_idproductor', 'c05_id', 'c01_id', 'a02_usuAlta', 'a02_usuMod'], 'integer'],
             [['a02_fecAlta', 'a02_fecMod'], 'safe'],
             [['a02_apaterno', 'a02_amaterno'], 'string', 'max' => 50],
             [['a02_nombre'], 'string', 'max' => 100],
@@ -74,7 +76,9 @@ class PerfilUsuario extends \yii\db\ActiveRecord
             'a02_intentos' => 'Intentos erroneos de acceso',
             'a02_islab' => 'Laboratorio ',
             'a02_ismed' => 'Es médico',
+            'a02_idproductor' => 'Es productor',
             'c05_id' => 'ID Médico',
+            'c01_id' => 'Productor',
             'a02_usuAlta' => 'Usuario Alta',
             'a02_fecAlta' => 'Fecha de Alta',
             'a02_usuMod' => 'Usuario Modificación',
@@ -117,6 +121,7 @@ class PerfilUsuario extends \yii\db\ActiveRecord
         return ArrayHelper::map($dropciones, 'id', 'username');
 
     }
+
 
     public static function desactivarUsuario($id)
     {

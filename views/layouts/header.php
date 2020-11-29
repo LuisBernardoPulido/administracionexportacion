@@ -10,7 +10,6 @@ $this->registerJsFile('/vendor/igorescobar/jquery-mask-plugin/src/jquery.mask.js
 $this->registerJsFile(Yii::$app->request->baseUrl . '/js/control_main.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 ?>
 <header class="main-header" style="position: fixed;width: 100%;" xmlns="http://www.w3.org/1999/html">
     <nav class="navbar navbar-static-top">
@@ -36,7 +35,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/control_main.js', ['dep
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogos <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Usuarios</a></li>
+                            <li><a href="../web/index.php?r=perfil-usuario-exportador/create">Usuarios</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Razas no exportables</a></li>
                         </ul>
@@ -55,16 +54,16 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/control_main.js', ['dep
                             <!-- The user image in the navbar-->
 
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Administrador</span>
+                            <span class="hidden-xs">
+                                <?=\app\models\PerfilUsuario::find()->where('a01_id=:user', [':user'=>Yii::$app->user->getId()])->one()->a02_nombre?>
+                            </span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-
-
                                 <p>
-                                    Administrador
-                                    <small>Miembro desde Junio 2020</small>
+                                    <?=\app\models\PerfilUsuario::find()->where('a01_id=:user', [':user'=>Yii::$app->user->getId()])->one()->a02_nombre?>
+                                    <?=\app\models\PerfilUsuario::find()->where('a01_id=:user', [':user'=>Yii::$app->user->getId()])->one()->a02_apaterno?>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -88,7 +87,13 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/control_main.js', ['dep
                                     <a href="#" class="btn btn-default btn-flat">Mi perfil</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Salir</a>
+                                    <div class="pull-right">
+                                        <?= Html::a(
+                                            'Salir',
+                                            ['/site/logout'],
+                                            ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                        ) ?>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
