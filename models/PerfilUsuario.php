@@ -46,7 +46,7 @@ class PerfilUsuario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['a01_id', 'a02_nombre', 'a02_usuAlta'], 'required'],
+            [['a01_id', 'a02_nombre', 'a02_usuAlta', 'c01_id'], 'required'],
             [['a01_id', 'a02_activo', 'a02_intentos', 'a02_islab', 'a02_ismed', 'a02_idproductor', 'c05_id', 'c01_id', 'a02_usuAlta', 'a02_usuMod'], 'integer'],
             [['a02_fecAlta', 'a02_fecMod'], 'safe'],
             [['a02_apaterno', 'a02_amaterno'], 'string', 'max' => 50],
